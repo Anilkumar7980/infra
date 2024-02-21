@@ -54,39 +54,6 @@ resource "google_compute_firewall" "allow_internal" {
 
 
 
-resource "google_project_service" "logging" {
-  service = "logging.googleapis.com"
-  project = var.project_id
-}
-
-resource "google_project_service" "monitoring" {
-  service                    = "monitoring.googleapis.com"
-  project                    = var.project_id
-  disable_dependent_services = true
-}
-
-
-
-resource "google_project_iam_binding" "gke_nodes_logging" {
-  project = var.project_id
-  role    = "roles/logging.logWriter"
-
-  members = [
-    "serviceAccount:pre-sales@project-7989.iam.gserviceaccount.com",
-  ]
-}
-
-
-resource "google_project_iam_binding" "gke_nodes_monitoring" {
-  project = var.project_id
-  role    = "roles/monitoring.metricWriter"
-
-
-  members = [
-    "serviceAccount:pre-sales@project-7989.iam.gserviceaccount.com",
-  ]
-}
-
 
 #vpc
 
