@@ -1,0 +1,33 @@
+options:
+  logging: GCS_ONLY
+logsBucket: 'gs://cblogs'
+
+
+steps:
+  
+
+  # Initialize Terraform
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform init
+
+  # Terraform Plan
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform plan
+
+  # Terraform Apply
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform apply -auto-approve
+
+timeout: '1200s'  # Adjust the timeout based on your deployment's complexity
