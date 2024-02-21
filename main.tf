@@ -71,7 +71,6 @@ resource "google_compute_subnetwork" "gke_subnet" {
   region        = var.region
   network       = google_compute_network.vpc.name
 }
-
 resource "google_compute_subnetwork" "public_subnet" {
   project       = var.project_id
   name          = "public-subnet"
