@@ -3,7 +3,7 @@ name: 'Deploy Infrastructure'
 on:
   push:
     branches:
-      - main  # Trigger on changes to the main branch
+      - master  # Trigger on changes to the main branch
 
 jobs:
   terraform:
